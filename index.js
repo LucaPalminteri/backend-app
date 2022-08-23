@@ -24,3 +24,10 @@ app.get('/', (req, res) => {
     conect()
     res.render('index', {title:'title of the page', data: 'any data content'})
 })
+
+app.get('/add/:name/:lastName', (req,res) => {
+    let name = req.params.name;
+    let lastName = req.params.lastName;
+
+    console.log(name + ' ' + lastName);
+})

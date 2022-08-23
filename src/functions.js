@@ -5,6 +5,6 @@ const tech = document.getElementById('tech')
 const btnAdd = document.getElementById('btn-add')
 
 btnAdd.addEventListener('click', ()=>{
-    console.log('asfer');
+    window.location.href = `add/${name.value}/${lastName.value}`
 })
 
