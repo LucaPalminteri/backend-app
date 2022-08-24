@@ -35,7 +35,7 @@ const addUser = (name,lastName,bornDate,sex,tech) => {
                     "${tech}")`;
     conector.query(q, (err, result, filed) => {
         if(err) throw err;
-        console.log(result);
+        //console.log(result);
     })
 }
 
@@ -43,7 +43,7 @@ const getUsers = ()=> {
     let q = 'SELECT * FROM users'
     conector.query(q,(err, result, filed) => {
         users = result
-        console.log(result);
+        //console.log(result);
     })
     return users
 }

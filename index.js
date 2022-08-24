@@ -25,6 +25,14 @@ app.use(express.static('./css'))
 
 app.get('/', (req, res) => {
     users = getUsers();
+
+    users.forEach(element => {
+        let today = new Date()
+        let bornDateTime = new Date(element.bornDate)
+        let age = Math.abs(today.getFullYear() - bornDateTime.getFullYear())
+        if(today.getMonth() <= bornDateTime.getMonth() && today.getDay() <= bornDateTime.getDay()) age--
+        element.bornDate = age
+    });
     res.render('index', {users,data:'as'})
 })
 
