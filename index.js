@@ -1,5 +1,5 @@
 import express from "express";
-import { conect } from "./src/mysql_conector.js";
+import { conect, addUser } from "./src/mysql_conector.js";
 
 // express initialization 
 const app = express()
@@ -21,7 +21,6 @@ app.use(express.static('./css'))
 
 
 app.get('/', (req, res) => {
-    conect()
     res.render('index', {title:'title of the page', data: 'any data content'})
 })
 
@@ -29,5 +28,8 @@ app.get('/add/:name/:lastName', (req,res) => {
     let name = req.params.name;
     let lastName = req.params.lastName;
 
+    addUser(name,lastName,bornDate,sex,tech);
+
+    res.redirect('/');
     console.log(name + ' ' + lastName);
 })
