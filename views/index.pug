@@ -10,4 +10,12 @@ html
             | Sex
             input(type="text" placeholder="tech" id="tech")
             button(id='btn-add') Add
+            each user in users
+                p= `ID: ${user.id_users}`
+                p= `Name: ${user.name}`
+                p= `Last Name: ${user.lastName}`
+                p= `Born Date: ${user.bornDate}`
+                p= `Sex: ${user.sex}`
+                p= `Tech: ${user.tech}`
+                br
     script(src="functions.js") 

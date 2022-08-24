@@ -1,6 +1,8 @@
 import express from "express";
 import { conect, addUser, getUsers } from "./src/mysql_conector.js";
 
+let users
+
 // express initialization 
 const app = express()
 
@@ -22,7 +24,7 @@ app.use(express.static('./css'))
 
 
 app.get('/', (req, res) => {
-    let users = getUsers();
+    users = getUsers();
     res.render('index', {users,data:'as'})
 })
 
