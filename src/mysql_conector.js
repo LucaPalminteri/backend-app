@@ -17,7 +17,6 @@ const conect = ()=> {
         console.log('OKKKKK');
     })
     conector.end()
-    console.log('connectiopn ended');
 }
 
 const addUser = (name,lastName,bornDate,sex,tech) => {
@@ -35,7 +34,6 @@ const addUser = (name,lastName,bornDate,sex,tech) => {
                     "${tech}")`;
     conector.query(q, (err, result, filed) => {
         if(err) throw err;
-        //console.log(result);
     })
 }
 
@@ -43,9 +41,13 @@ const getUsers = ()=> {
     let q = 'SELECT * FROM users'
     conector.query(q,(err, result, filed) => {
         users = result
-        //console.log(result);
     })
     return users
 }
 
-export {conect, addUser, getUsers}
+const deleteUser = id => {
+    const q = `DELETE FROM users WHERE id_users=${id}`
+    conector.query(q)
+}
+
+export {conect, addUser, getUsers, deleteUser}

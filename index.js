@@ -1,5 +1,5 @@
 import express from "express";
-import { conect, addUser, getUsers } from "./src/mysql_conector.js";
+import { conect, addUser, getUsers, deleteUser } from "./src/mysql_conector.js";
 
 let users
 
@@ -24,16 +24,17 @@ app.use(express.static('./css'))
 
 
 app.get('/', (req, res) => {
-    users = getUsers();
+    // users = getUsers();
 
-    users.forEach(element => {
-        let today = new Date()
-        let bornDateTime = new Date(element.bornDate)
-        let age = Math.abs(today.getFullYear() - bornDateTime.getFullYear())
-        if(today.getMonth() <= bornDateTime.getMonth() && today.getDay() <= bornDateTime.getDay()) age--
-        element.bornDate = age
-    });
-    res.render('index', {users,data:'as'})
+     let variables = [{id:0,name:'Choose Tech Stack'},{id:1,name:'MERN'},{id:2,name:'LAMP'},{id:3,name:'ASP.NET'},{id:4,name:'MEAN'},{id:5,name:'MEVN'},{id:1,name:'Ruby on Rails'}]
+    // users.forEach(element => {
+    //     let today = new Date()
+    //     let bornDateTime = new Date(element.bornDate)
+    //     let age = Math.abs(today.getFullYear() - bornDateTime.getFullYear())
+    //     if(today.getMonth() <= bornDateTime.getMonth() && today.getDay() <= bornDateTime.getDay()) age--
+    //     element.bornDate = age
+    // });
+    res.render('index', {users,data:'as',variables})
 })
 
 app.get('/add/:name/:lastName/:bornDate/:sex/:tech', (req,res) => {
@@ -46,5 +47,10 @@ app.get('/add/:name/:lastName/:bornDate/:sex/:tech', (req,res) => {
     addUser(name,lastName,bornDate,sex,tech);
 
     res.redirect('/');
-    console.log(`${name} - ${lastName} - ${bornDate} - ${sex} - ${tech}`);
+})
+
+app.get('/delete/:id', (req,res) => {
+    let id = req.params.id
+    deleteUser(id)
+    res.redirect('/')
 })

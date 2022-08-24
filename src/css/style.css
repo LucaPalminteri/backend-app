@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    font-size: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.form {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px #EFEFEF;
+    padding: 20px;
+}
+
+input {
+    margin: 10px 0;
+}
+
+button {
+    margin-top: 40px;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #EFEF00;
+    transition-duration: .2s;
+}
+
+button:hover {
+    cursor: pointer;
+    border-radius: 0;
+    background-color: #FFFF00;
+}

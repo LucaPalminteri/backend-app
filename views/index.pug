@@ -1,21 +1,31 @@
 html   
     head 
+        link(rel='stylesheet',  href='/css/style.css')
+        link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
         title= "SQL - backend application" 
     body 
         div.container
-            input(type="text" placeholder="name" id="name")
-            input(type="text" placeholder="lastName" id="lastName")
-            input(type="date" placeholder="bornDate" id="bornDate")
-            input(type="checkbox", id="sex") 
-            | Sex
-            input(type="text" placeholder="tech" id="tech")
-            button(id='btn-add') Add
-            each user in users
-                p= `ID: ${user.id_users}`
-                p= `Name: ${user.name}`
-                p= `Last Name: ${user.lastName}`
-                p= `Age: ${user.bornDate}`
-                p= `Sex: ${user.sex}`
-                p= `Tech Stack: ${user.tech}`
-                br
+            div.form
+                input(type="text" placeholder="Name" id="name" required)
+                input(type="text" placeholder="Last Name" id="lastName")
+                input(type="date" placeholder="Born Date" id="bornDate")
+                | Gender: 
+                div#sex  
+                    input(type='radio', name='sex', id='M', value='M' checked)
+                    label(for='M') M 
+                    input(type='radio', name='sex', id='F', value='F')
+                    label(for='F') F
+                select#tech
+                    each variable in variables
+                        option(value=variable.id) #{variable.name}
+                button(id='btn-add') Add
+            //- each user in users
+            //-     p= `ID: ${user.id_users}` 
+            //-     p= `Name: ${user.name}`
+            //-     p= `Last Name: ${user.lastName}`
+            //-     p= `Age: ${user.bornDate}`
+            //-     p= `Sex: ${user.sex}`
+            //-     p= `Tech Stack: ${user.tech}`
+            //-     span(class="delete material-icons" id=user.id_users) delete
+            //-     br
     script(src="functions.js") 
